@@ -40,9 +40,9 @@ public class User {
         this.password = password;
     }
 
-    public String getfullName(){return fullName;}
+    public String getFullName(){return fullName;}
 
-    public void setfullName(String email){this.fullName=fullName;}
+    public void setFullName(String email){this.fullName=fullName;}
 
     public String getRole() {
         return role;
