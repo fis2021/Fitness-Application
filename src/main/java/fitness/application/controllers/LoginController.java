@@ -1,5 +1,6 @@
 package fitness.application.controllers;
 
+import fitness.application.exceptions.usernameDoesNotExist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,12 +35,23 @@ public class LoginController {
     PasswordField passwordField;
     @FXML
     private Text loginMessage;
-    public void handleLogIn(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        if(UserServices.checkIsInDataBase(usernameField.getText())==true) {
+    public void handleLogIn(javafx.scene.input.MouseEvent mouseEvent) throws IOException, usernameDoesNotExist {
+        if(UserServices.checkUserExist(usernameField.getText()).equals("Customer")) {
             User c = UserServices.FindTheUser(usernameField.getText());
 
             if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
                 Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
+                Stage window = (Stage) loginButton.getScene().getWindow();
+                window.setTitle("Main Page");
+                window.setScene(new Scene(root, 600, 400));
+            }
+            else loginMessage.setText("Incorrect Password");
+        }
+        if(UserServices.checkUserExist(usernameField.getText()).equals("Trainer")) {
+            User c = UserServices.FindTheUser(usernameField.getText());
+
+            if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
+                Parent root = FXMLLoader.load(getClass().getResource("/CustomerList.fxml"));
                 Stage window = (Stage) loginButton.getScene().getWindow();
                 window.setTitle("Main Page");
                 window.setScene(new Scene(root, 600, 400));

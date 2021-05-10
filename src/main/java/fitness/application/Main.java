@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import fitness.application.services.*;
+import fitness.application.user.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
