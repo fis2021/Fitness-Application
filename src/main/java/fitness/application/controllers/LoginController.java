@@ -19,6 +19,7 @@ public class LoginController {
     public void handleCreateAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Register.fxml"));
         Stage  window = (Stage)createAccountButton.getScene().getWindow();
+        window.setTitle("Create Account");
         window.setScene(new Scene(root, 509,339));
     }
 }
