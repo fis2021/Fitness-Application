@@ -6,12 +6,14 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String fullName;
     private String role;
 
-    public User(String username, String email,String password, String role) {
+    public User(String username, String email,String password,String fullName, String role) {
         this.username = username;
         this.email=email;
         this.password = password;
+        this.fullName=fullName;
         this.role = role;
     }
 
@@ -38,9 +40,14 @@ public class User {
         this.password = password;
     }
 
+    public String getfullName(){return fullName;}
+
+    public void setfullName(String email){this.fullName=fullName;}
+
     public String getRole() {
         return role;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -51,6 +58,7 @@ public class User {
         if (username != null ? !user.equals(user.username) : user.username != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (fullName != null ? !fullName.equals(user.fullName) : user.fullName != null) return false;
         return role != null ? role.equals(user.role) : user.role == null;
     }
 

@@ -22,7 +22,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        initDirectory();
+        UserServices.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        primaryStage.setTitle("Log In");
         primaryStage.setScene(new Scene(root, 509, 339));
         primaryStage.show();
     }

@@ -26,16 +26,16 @@ public class UserServices {
     public static void initDatabase() {
 
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("myData4.db").toFile())
-                .openOrCreate("test", "test");
+                .filePath(getPathToFile("users.db").toFile())
+                .openOrCreate("admin", "admin");
         userRepository = database.getRepository(User.class);
 
     }
-    public static void addUser(String username, String password, String role, String good) throws usernameAlreadyExists,incorrectUsername, incorrectPassword {
+    public static void addUser(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword {
         checkUserDoesNotAlreadyExist(username);
         if(username.length()<3) throw new incorrectUsername();
         if(password.length()<3) throw new incorrectPassword();
-        userRepository.insert(new User(username, encodePassword(username, password), role,good));
+        userRepository.insert(new User(username,email,encodePassword(username, password),fullName,role));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws usernameAlreadyExists{
