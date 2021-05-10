@@ -40,8 +40,15 @@ public class RegisterController {
     @FXML
     public void handleRegister() {
         try {
-            UserServices.addUser(usernameField.getText(),emailField.getText(),passwordField.getText(),fullnameField.getText() ,(String) roleField.getValue());
-            registerMessage.setText("Account created successfully!");
+            if(((String) roleField.getValue()).equals("Customer")) {
+                UserServices.addCustomer(usernameField.getText(), emailField.getText(), passwordField.getText(), fullnameField.getText(), (String) roleField.getValue());
+                registerMessage.setText("Account created successfully!");
+            }
+            else if(((String) roleField.getValue()).equals("Trainer")) {
+                UserServices.addTrainer(usernameField.getText(), emailField.getText(), passwordField.getText(), fullnameField.getText(), (String) roleField.getValue());
+                registerMessage.setText("Account created successfully!");
+            }
+
         } catch (usernameAlreadyExists e) {
             registerMessage.setText(e.getMessage());
         }

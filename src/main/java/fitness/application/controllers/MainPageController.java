@@ -27,4 +27,6 @@ public class MainPageController {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
+
+
 }
