@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400" prefWidth="500.0" styleClass="body" stylesheets="@LoginRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.RegisterController">
+   <children>
+      <Button fx:id="createAccount" layoutX="291.0" layoutY="251.0" mnemonicParsing="false" onMouseClicked="#handleRegister" style="-fx-font-weight : bold;" text="Create Account" />
+      <Button fx:id="backButton" layoutX="239.0" layoutY="251.0" mnemonicParsing="false" onMouseClicked="#handleBack" style="-fx-font-weight : bold;" text="Back" />
+      <TextField fx:id="usernameField" layoutX="240.0" layoutY="70.0" />
+      <TextField fx:id="emailField" layoutX="240.0" layoutY="106.0" />
+      <PasswordField fx:id="passwordField" layoutX="240.0" layoutY="140.0" />
+      <TextField fx:id="fullnameField" layoutX="240.0" layoutY="176.0" />
+      <ChoiceBox fx:id="roleField" layoutX="239.0" layoutY="214.0" prefWidth="150.0" />
+      <Text fill="WHITE" layoutX="180.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Username" />
+      <Text fill="WHITE" layoutX="197.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="E-Mail" />
+      <Text fill="WHITE" layoutX="182.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Password" />
+      <Text fill="WHITE" layoutX="180.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Full Name" wrappingWidth="59.5625" />
+      <Text fill="WHITE" layoutX="210.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Role" />
+      <Text fx:id="registerMessage" fill="WHITE" layoutX="250.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="127.13670349121094" style="-fx-font-weight : bold;" />
+   </children>
+</AnchorPane>
