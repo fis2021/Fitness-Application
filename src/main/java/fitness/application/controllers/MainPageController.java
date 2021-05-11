@@ -24,7 +24,7 @@ import fitness.application.controllers.LoginController;
 public class MainPageController {
 
     @FXML
-    Button exitButton,logOutButton;
+    Button exitButton,logOutButton,myProfileButton;
     @FXML
     private Text welcomeText;
     public void initialize() throws IOException {
@@ -34,11 +34,19 @@ public class MainPageController {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
+
     public void handleLogOut(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
         Stage  window = (Stage)logOutButton.getScene().getWindow();
         window.setTitle("Log In");
         window.setScene(new Scene(root, 509,339));
+    }
+
+    public void handleMyProfile(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/MyProfilePage.fxml"));
+        Stage  window = (Stage)myProfileButton.getScene().getWindow();
+        window.setTitle("My Profile");
+        window.setScene(new Scene(root, 600,400));
     }
 
 }
