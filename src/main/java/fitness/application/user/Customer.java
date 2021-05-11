@@ -1,11 +1,14 @@
 package fitness.application.user;
 
+import org.dizitart.no2.objects.InheritIndices;
+
+@InheritIndices
 public class Customer extends User{
-    private String height;
-    private String weight;
-    private String age;
-    private String gender;
-    private String description;
+    private String height=null;
+    private String weight=null;
+    private String age=null;
+    private String gender=null;
+    private String description=null;
 
     public Customer(){
 

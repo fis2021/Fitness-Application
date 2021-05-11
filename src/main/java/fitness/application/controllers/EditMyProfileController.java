@@ -42,12 +42,10 @@ public class EditMyProfileController {
     }
 
     public void handleSaveChanges(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
-        ((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).setCustomer(heightField.getText(),weightField.getText(),ageField.getText(),(String) gender.getValue(),descriptionField.getText());
-        /*((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).setWeight(weightField.getText());
-        ((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).setAge(ageField.getText());
-        ((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).setGender( (String) gender.getValue());
-        ((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).setDescription(descriptionField.getText());*/
-        System.out.println(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getWeight());
+        Customer user = ((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername()));
+        user.setCustomer(heightField.getText(),weightField.getText(),ageField.getText(),(String) gender.getValue(),descriptionField.getText());
+        UserServices.customerRepository.update(user);
+        System.out.println(user.getHeight());
         Parent root = FXMLLoader.load(getClass().getResource("/MyProfilePage.fxml"));
         Stage  window = (Stage)backButton.getScene().getWindow();
         window.setTitle("My Profile");
