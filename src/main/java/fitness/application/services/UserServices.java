@@ -92,29 +92,6 @@ public class UserServices {
             return role;
         }
     }
-    public static String checkUserExist(String username) throws usernameDoesNotExist{
-        int ok = 0;
-        String role = null;
-        for (User user : customerRepository.find()) {
-            if (Objects.equals(username, user.getUsername())) {
-                ok = 1;
-                role = user.getRole();
-                break;
-            }
-        }
-        for (User user : trainerRepository.find()) {
-            if (Objects.equals(username, user.getUsername())) {
-                ok = 1;
-                role = user.getRole();
-                break;
-            }
-        }
-        if (ok == 0) {
-            throw new usernameDoesNotExist(username);
-        } else {
-            return role;
-        }
-    }
 
     public static boolean checkIsInDataBase(String username){
         boolean b=false;
