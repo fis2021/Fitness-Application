@@ -1,5 +1,8 @@
 package fitness.application.user;
 
+import org.dizitart.no2.objects.InheritIndices;
+
+@InheritIndices
 public class Trainer extends User{
 
     public Trainer(){

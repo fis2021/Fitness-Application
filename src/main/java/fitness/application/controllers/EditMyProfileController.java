@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import fitness.application.services.*;
 import fitness.application.exceptions.*;
+import fitness.application.user.*;
 
 import java.awt.*;
 import java.io.IOException;
@@ -34,6 +35,17 @@ public class EditMyProfileController {
     public void initialize() { gender.getItems().addAll("Male", "Female"); }
 
     public void handleBack(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/MyProfilePage.fxml"));
+        Stage  window = (Stage)backButton.getScene().getWindow();
+        window.setTitle("My Profile");
+        window.setScene(new Scene(root, 600,400));
+    }
+
+    public void handleSaveChanges(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+        Customer user = ((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername()));
+        user.setCustomer(heightField.getText(),weightField.getText(),ageField.getText(),(String) gender.getValue(),descriptionField.getText());
+        UserServices.customerRepository.update(user);
+        System.out.println(user.getHeight());
         Parent root = FXMLLoader.load(getClass().getResource("/MyProfilePage.fxml"));
         Stage  window = (Stage)backButton.getScene().getWindow();
         window.setTitle("My Profile");

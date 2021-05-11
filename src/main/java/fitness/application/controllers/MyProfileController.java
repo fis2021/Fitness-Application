@@ -1,5 +1,6 @@
 package fitness.application.controllers;
 
+import fitness.application.user.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +22,17 @@ import java.awt.*;
 import java.io.IOException;
 public class MyProfileController {
     @FXML
+    Text heightText,weightText,ageText,genderText,descriptionText;
+    @FXML
     Button mainPageButton, editProfileButton;
+
+    public void initialize() {
+        heightText.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getHeight());
+        weightText.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getWeight());
+        ageText.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getAge());
+        genderText.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getGender());
+        descriptionText.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getDescription());
+    }
 
     public void handleMainPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));

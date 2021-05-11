@@ -1,11 +1,14 @@
 package fitness.application.user;
 
+import org.dizitart.no2.objects.InheritIndices;
+
+@InheritIndices
 public class Customer extends User{
-    private int height;
-    private int weight;
-    private int age;
-    private String gender;
-    private String description;
+    private String height=null;
+    private String weight=null;
+    private String age=null;
+    private String gender=null;
+    private String description=null;
 
     public Customer(){
 
@@ -15,17 +18,25 @@ public class Customer extends User{
         super(username,email,password,fullName,role);
     }
 
-    public int getHeight(){return height;}
+    public void setCustomer(String height, String weight, String age, String gender, String description){
+        this.height=height;
+        this.weight=weight;
+        this.age=age;
+        this.gender=gender;
+        this.description=description;
+    }
 
-    public void setHeight(int height){this.height=height;}
+    public String getHeight(){return height;}
 
-    public int getWeight(){return weight;}
+    public void setHeight(String height){this.height=height;}
 
-    public void setWeight(int weight){this.weight=weight;}
+    public String getWeight(){return weight;}
 
-    public int getAge(){return age;}
+    public void setWeight(String weight){this.weight=weight;}
 
-    public void setAge(int age){this.age=age;}
+    public String getAge(){return age;}
+
+    public void setAge(String age){this.age=age;}
 
     public String getGender(){return gender;}
 

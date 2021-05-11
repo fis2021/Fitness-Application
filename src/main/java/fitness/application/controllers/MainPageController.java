@@ -22,7 +22,7 @@ public class MainPageController {
     @FXML
     private Text welcomeText;
     public void initialize() throws IOException {
-        welcomeText.setText("Welcome ");
+        welcomeText.setText("Welcome "+ UserServices.FindTheUser(UserServices.getLoggedInUsername()).getUsername());
     }
     public void handleExit(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) exitButton.getScene().getWindow();
