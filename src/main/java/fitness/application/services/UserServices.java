@@ -54,6 +54,33 @@ public class UserServices {
             if (Objects.equals(username, user.getUsername()))
                 throw new usernameAlreadyExists(username);
         }
+        for (User user : trainerRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                throw new usernameAlreadyExists(username);
+        }
+    }
+    public static String checkUserExist(String username) throws usernameDoesNotExist{
+        int ok = 0;
+        String role = null;
+        for (User user : customerRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                ok = 1;
+                role = user.getRole();
+                break;
+            }
+        }
+        for (User user : trainerRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                ok = 1;
+                role = user.getRole();
+                break;
+            }
+        }
+        if (ok == 0) {
+            throw new usernameDoesNotExist(username);
+        } else {
+            return role;
+        }
     }
     public static String checkUserExist(String username) throws usernameDoesNotExist{
         int ok = 0;
@@ -104,6 +131,7 @@ public class UserServices {
         }
         return a;
     }
+
     public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));

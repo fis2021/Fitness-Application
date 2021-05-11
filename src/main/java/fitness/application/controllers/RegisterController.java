@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import fitness.application.services.*;
 import fitness.application.exceptions.*;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class RegisterController {
