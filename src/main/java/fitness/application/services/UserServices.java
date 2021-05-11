@@ -13,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import static fitness.application.services.FileSystemServices.getPathToFile;
 import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
@@ -111,6 +113,14 @@ public class UserServices {
                 a=user;
         }
         return a;
+    }
+
+    public static List CustomerList() {
+        List<Customer> customer = new ArrayList<>();
+        for (Customer user : customerRepository.find()) {
+            customer.add(user);
+        }
+        return customer;
     }
 
     public static String encodePassword(String salt, String password) {

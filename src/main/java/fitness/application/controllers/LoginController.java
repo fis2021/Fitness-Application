@@ -53,9 +53,9 @@ public class LoginController {
 
             if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
                 UserServices.setLoggedInUsername(usernameField.getText());
-                Parent root = FXMLLoader.load(getClass().getResource("/CustomerList.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/CustomerListPage.fxml"));
                 Stage window = (Stage) loginButton.getScene().getWindow();
-                window.setTitle("Main Page");
+                window.setTitle("Customer List");
                 window.setScene(new Scene(root, 600, 400));
             }
             else loginMessage.setText("Incorrect Password");

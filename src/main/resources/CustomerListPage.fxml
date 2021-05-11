@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@CustomerList.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.CustomerListController">
+   <children>
+      <VBox layoutY="58.0">
+         <children>
+            <TableView fx:id="customersTable" prefHeight="257.0" prefWidth="600.0" styleClass="body" stylesheets="@CustomerList.css" />
+         </children>
+      </VBox>
+      <Label layoutX="14.0" layoutY="7.0" prefHeight="50.0" prefWidth="180.0" text="Customer List" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="addExecicesButton" layoutX="488.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleAddExercises" prefHeight="50.0" prefWidth="104.0" text="Add Exercises" />
+      <Button fx:id="logOutButton" layoutX="17.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleLogOut" prefHeight="50.0" prefWidth="86.0" text="Log out" />
+   </children>
+</AnchorPane>
