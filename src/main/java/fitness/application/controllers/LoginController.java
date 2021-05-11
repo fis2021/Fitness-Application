@@ -1,6 +1,6 @@
 package fitness.application.controllers;
 
-import fitness.application.exceptions.usernameDoesNotExist;
+import fitness.application.exceptions.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,31 +35,50 @@ public class LoginController {
     PasswordField passwordField;
     @FXML
     private Text loginMessage;
-    public void handleLogIn(javafx.scene.input.MouseEvent mouseEvent) throws IOException, usernameDoesNotExist {
-        if(UserServices.checkUserExist(usernameField.getText()).equals("Customer")) {
-            User c = UserServices.FindTheUser(usernameField.getText());
+    public void handleLogIn(javafx.scene.input.MouseEvent mouseEvent) throws IOException, usernameDoesNotExist, emptyFieldException {
+        try {
+            UserServices.checkEmptyFieldsLogIn(usernameField.getText(),passwordField.getText());
+            if (UserServices.checkUserExist(usernameField.getText()).equals("Customer")) {
+                User c = UserServices.FindTheUser(usernameField.getText());
 
-            if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
-                UserServices.setLoggedInUsername(usernameField.getText());
-                Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
-                Stage window = (Stage) loginButton.getScene().getWindow();
-                window.setTitle("Main Page");
-                window.setScene(new Scene(root, 600, 400));
+                if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
+                    try {
+                        UserServices.setLoggedInUsername(usernameField.getText());
+                        Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
+                        Stage window = (Stage) loginButton.getScene().getWindow();
+                        window.setTitle("Main Page");
+                        window.setScene(new Scene(root, 600, 400));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else loginMessage.setText("Incorrect Password");
             }
-            else loginMessage.setText("Incorrect Password");
-        }
-        if(UserServices.checkUserExist(usernameField.getText()).equals("Trainer")) {
-            User c = UserServices.FindTheUser(usernameField.getText());
 
-            if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
-                UserServices.setLoggedInUsername(usernameField.getText());
-                Parent root = FXMLLoader.load(getClass().getResource("/CustomerListPage.fxml"));
-                Stage window = (Stage) loginButton.getScene().getWindow();
-                window.setTitle("Customer List");
-                window.setScene(new Scene(root, 600, 400));
+
+            if (UserServices.checkUserExist(usernameField.getText()).equals("Trainer")) {
+                User c = UserServices.FindTheUser(usernameField.getText());
+
+                if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
+                    try {
+                        UserServices.setLoggedInUsername(usernameField.getText());
+                        Parent root = FXMLLoader.load(getClass().getResource("/CustomerListPage.fxml"));
+                        Stage window = (Stage) loginButton.getScene().getWindow();
+                        window.setTitle("Customer List");
+                        window.setScene(new Scene(root, 600, 400));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else loginMessage.setText("Incorrect Password");
             }
-            else loginMessage.setText("Incorrect Password");
+
+        } catch (usernameDoesNotExist e)
+        {
+            loginMessage.setText(e.getMessage());
         }
-        else loginMessage.setText("Account with this username doesnt exist");
+        catch (emptyFieldException e)
+        {
+            loginMessage.setText(e.getMessage());
+        }
     }
+
 }

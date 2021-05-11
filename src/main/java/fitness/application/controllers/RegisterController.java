@@ -41,7 +41,9 @@ public class RegisterController {
     @FXML
     public void handleRegister() {
         try {
-            if(((String) roleField.getValue()).equals("Customer")) {
+            if(roleField.getValue()==null)
+                throw new emptyFieldException();
+            else if(((String) roleField.getValue()).equals("Customer")) {
                 UserServices.addCustomer(usernameField.getText(), emailField.getText(), passwordField.getText(), nameField.getText(), (String) roleField.getValue());
                 registerMessage.setText("Account created successfully!");
             }
@@ -49,7 +51,6 @@ public class RegisterController {
                 UserServices.addTrainer(usernameField.getText(), emailField.getText(), passwordField.getText(), nameField.getText(), (String) roleField.getValue());
                 registerMessage.setText("Account created successfully!");
             }
-
         } catch (usernameAlreadyExists e) {
             registerMessage.setText(e.getMessage());
         }
@@ -58,6 +59,10 @@ public class RegisterController {
             registerMessage.setText(e.getMessage());
         }
         catch (incorrectPassword e)
+        {
+            registerMessage.setText(e.getMessage());
+        }
+        catch (emptyFieldException e)
         {
             registerMessage.setText(e.getMessage());
         }
