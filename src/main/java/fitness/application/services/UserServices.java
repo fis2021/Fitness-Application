@@ -41,17 +41,19 @@ public class UserServices {
         trainerRepository = database.getRepository(Trainer.class);
 
     }
-    public static void addCustomer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword {
+    public static void addCustomer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword, emptyFieldException {
         checkUserDoesNotAlreadyExist(username);
         if(username.length()<3) throw new incorrectUsername();
         if(password.length()<3) throw new incorrectPassword();
+        checkEmptyFields(username, fullName, password, email, role);
         customerRepository.insert(new Customer(username,email,encodePassword(username, password),fullName,role));
     }
 
-    public static void addTrainer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword {
+    public static void addTrainer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword, emptyFieldException{
         checkUserDoesNotAlreadyExist(username);
         if(username.length()<3) throw new incorrectUsername();
         if(password.length()<3) throw new incorrectPassword();
+        checkEmptyFields(username, fullName, password, email, role);
         trainerRepository.insert(new Trainer(username,email,encodePassword(username, password),fullName,role));
     }
 
@@ -118,6 +120,27 @@ public class UserServices {
         }
         return a;
     }
+
+    public static void checkEmptyFields(String username, String fullName, String password, String email, String role) throws emptyFieldException {
+        if (Objects.equals(username, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(fullName, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(password, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(email, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(role, null))
+            throw new emptyFieldException();
+    }
+
+    public static void checkEmptyFieldsLogIn(String username, String password) throws emptyFieldException {
+        if (Objects.equals(username, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(password, ""))
+            throw new emptyFieldException();
+    }
+
 
     public static List CustomerList() {
         List<Customer> customer = new ArrayList<>();
