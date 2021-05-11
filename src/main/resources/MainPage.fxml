@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@MainPage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.MainPageController">
+   <children>
+      <Button id="myProfileButton" layoutX="35.0" layoutY="63.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="116.0" text="My Profile">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="exitButton" layoutX="519.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#handleExit" prefHeight="51.0" prefWidth="68.0" text="EXIT" />
+      <Text fill="WHITE" layoutX="35.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fitness Application">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="432.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Page">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Button fx:id="logOutButton" onMouseClicked="#handleLogOut" layoutX="14.0" layoutY="334.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="68.0" text="Log Out" />
+      <Text fx:id="welcomeText" fill="WHITE" layoutX="27.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome user !" wrappingWidth="109.13671112060547" />
+      <Button fx:id="myExercisesButton" layoutX="442.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="116.0" text="My Exercises">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

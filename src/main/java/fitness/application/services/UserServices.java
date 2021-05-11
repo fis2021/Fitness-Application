@@ -1,10 +1,8 @@
 package fitness.application.services;
 
-import fitness.application.exceptions.incorrectPassword;
-import fitness.application.exceptions.incorrectUsername;
-import fitness.application.exceptions.usernameAlreadyExists;
-import fitness.application.user.User;
+import fitness.application.user.*;
 import fitness.application.services.*;
+import fitness.application.exceptions.*;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.RemoveOptions;
 import org.dizitart.no2.exceptions.NitriteIOException;
@@ -21,46 +19,92 @@ import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 
 public class UserServices {
-    public static ObjectRepository<User> userRepository;
+    public static ObjectRepository<Customer> customerRepository;
+    public static ObjectRepository<Trainer> trainerRepository;
 
     public static void initDatabase() {
 
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("users.db").toFile())
                 .openOrCreate("admin", "admin");
-        userRepository = database.getRepository(User.class);
+        customerRepository = database.getRepository(Customer.class);
+        trainerRepository = database.getRepository(Trainer.class);
 
     }
-    public static void addUser(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword {
+    public static void addCustomer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword {
         checkUserDoesNotAlreadyExist(username);
         if(username.length()<3) throw new incorrectUsername();
         if(password.length()<3) throw new incorrectPassword();
-        userRepository.insert(new User(username,email,encodePassword(username, password),fullName,role));
+        customerRepository.insert(new Customer(username,email,encodePassword(username, password),fullName,role));
+    }
+
+    public static void addTrainer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword {
+        checkUserDoesNotAlreadyExist(username);
+        if(username.length()<3) throw new incorrectUsername();
+        if(password.length()<3) throw new incorrectPassword();
+        trainerRepository.insert(new Trainer(username,email,encodePassword(username, password),fullName,role));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws usernameAlreadyExists{
-        for (User user : userRepository.find()) {
+        for (User user : customerRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new usernameAlreadyExists(username);
+        }
+        for (User user : trainerRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                throw new usernameAlreadyExists(username);
+        }
+    }
+    public static String checkUserExist(String username) throws usernameDoesNotExist{
+        int ok = 0;
+        String role = null;
+        for (User user : customerRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                ok = 1;
+                role = user.getRole();
+                break;
+            }
+        }
+        for (User user : trainerRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                ok = 1;
+                role = user.getRole();
+                break;
+            }
+        }
+        if (ok == 0) {
+            throw new usernameDoesNotExist(username);
+        } else {
+            return role;
         }
     }
 
     public static boolean checkIsInDataBase(String username){
         boolean b=false;
-        for (User user : userRepository.find()) {
+        for (User user : customerRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                b=true;
+        }
+        for (User user : trainerRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 b=true;
         }
         return b;
     }
+
     public static User FindTheUser(String username){
         User a=new User();
-        for (User user : userRepository.find()) {
+        for (User user : customerRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                a=user;
+        }
+        for (User user : trainerRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 a=user;
         }
         return a;
     }
+
     public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
