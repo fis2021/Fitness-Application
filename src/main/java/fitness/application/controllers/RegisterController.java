@@ -28,7 +28,7 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private TextField fullNameField;
+    private TextField nameField;
     @FXML
     private ChoiceBox roleField;
     @FXML
@@ -42,11 +42,11 @@ public class RegisterController {
     public void handleRegister() {
         try {
             if(((String) roleField.getValue()).equals("Customer")) {
-                UserServices.addCustomer(usernameField.getText(), emailField.getText(), passwordField.getText(), fullNameField.getText(), (String) roleField.getValue());
+                UserServices.addCustomer(usernameField.getText(), emailField.getText(), passwordField.getText(), nameField.getText(), (String) roleField.getValue());
                 registerMessage.setText("Account created successfully!");
             }
             else if(((String) roleField.getValue()).equals("Trainer")) {
-                UserServices.addTrainer(usernameField.getText(), emailField.getText(), passwordField.getText(), fullNameField.getText(), (String) roleField.getValue());
+                UserServices.addTrainer(usernameField.getText(), emailField.getText(), passwordField.getText(), nameField.getText(), (String) roleField.getValue());
                 registerMessage.setText("Account created successfully!");
             }
 

@@ -16,6 +16,7 @@ import java.io.IOException;
 
 
 public class MainPageController {
+
     @FXML
     Button exitButton,logOutButton,myProfileButton;
     @FXML
