@@ -19,24 +19,20 @@ import fitness.application.exceptions.*;
 
 import java.awt.*;
 import java.io.IOException;
-
 public class MyProfileController {
     @FXML
-    public Button mainPageButton;
-
-    @FXML
-    private TextField heightField, weightField, ageField, descriptionField;
-
-    @FXML
-    public ChoiceBox gender;
-
-    @FXML
-    public void initialize() { gender.getItems().addAll("Male", "Female", "Other"); }
+    Button mainPageButton, editProfileButton;
 
     public void handleMainPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
-        Stage  window = (Stage)mainPageButton.getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         window.setTitle("Main Page");
+        window.setScene(new Scene(root, 600,400));
+    }
+    public void handleEditProfile(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/EditMyProfilePage.fxml"));
+        Stage  window = (Stage)editProfileButton.getScene().getWindow();
+        window.setTitle("Edit My Profile");
         window.setScene(new Scene(root, 600,400));
     }
 }
