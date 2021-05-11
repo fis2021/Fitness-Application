@@ -16,13 +16,13 @@ import java.io.IOException;
 
 
 public class MainPageController {
+
     @FXML
     Button exitButton,logOutButton,myProfileButton;
     @FXML
     private Text welcomeText;
     public void initialize() throws IOException {
-        welcomeText.setText("Welcome "+UserServices.FindTheUser(UserServices.getLoggedInUsername()).getFullName());
-        System.out.println(UserServices.getLoggedInUsername());
+        welcomeText.setText("Welcome ");
     }
     public void handleExit(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) exitButton.getScene().getWindow();
