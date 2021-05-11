@@ -40,6 +40,7 @@ public class LoginController {
             User c = UserServices.FindTheUser(usernameField.getText());
 
             if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
+                UserServices.setLoggedInUsername(usernameField.getText());
                 Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
                 Stage window = (Stage) loginButton.getScene().getWindow();
                 window.setTitle("Main Page");
@@ -51,6 +52,7 @@ public class LoginController {
             User c = UserServices.FindTheUser(usernameField.getText());
 
             if (UserServices.encodePassword(usernameField.getText(), passwordField.getText()).compareTo(c.getPassword()) == 0) {
+                UserServices.setLoggedInUsername(usernameField.getText());
                 Parent root = FXMLLoader.load(getClass().getResource("/CustomerList.fxml"));
                 Stage window = (Stage) loginButton.getScene().getWindow();
                 window.setTitle("Main Page");

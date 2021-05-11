@@ -1,0 +1,4 @@
+.body{
+    -fx-background-image: url('myprofile.jpg') ;
+    -fx-background-size: cover ;
+}
