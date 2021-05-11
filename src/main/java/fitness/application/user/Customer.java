@@ -13,7 +13,6 @@ public class Customer extends User{
 
     public Customer(String username, String email,String password,String fullName, String role){
         super(username,email,password,fullName,role);
-        System.out.println(this.getFullName());
     }
 
     public int getHeight(){return height;}

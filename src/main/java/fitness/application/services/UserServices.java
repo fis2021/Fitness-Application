@@ -22,6 +22,14 @@ public class UserServices {
     public static ObjectRepository<Customer> customerRepository;
     public static ObjectRepository<Trainer> trainerRepository;
 
+    private static String loggedInUsername = "";
+
+    public static void setLoggedInUsername(String username){
+        loggedInUsername=username;
+    }
+
+    public static String getLoggedInUsername(){return loggedInUsername;}
+
     public static void initDatabase() {
 
         Nitrite database = Nitrite.builder()
