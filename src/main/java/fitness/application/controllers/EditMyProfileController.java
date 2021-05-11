@@ -45,7 +45,6 @@ public class EditMyProfileController {
         Customer user = ((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername()));
         user.setCustomer(heightField.getText(),weightField.getText(),ageField.getText(),(String) gender.getValue(),descriptionField.getText());
         UserServices.customerRepository.update(user);
-        System.out.println(user.getHeight());
         Parent root = FXMLLoader.load(getClass().getResource("/MyProfilePage.fxml"));
         Stage  window = (Stage)backButton.getScene().getWindow();
         window.setTitle("My Profile");
