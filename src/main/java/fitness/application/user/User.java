@@ -40,7 +40,7 @@ public class User {
         this.password = password;
     }
 
-    public String getFullName(){return fullName;}
+    public String getFullName(){return this.fullName;}
 
     public void setFullName(String email){this.fullName=fullName;}
 
