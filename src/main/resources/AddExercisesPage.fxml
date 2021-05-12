@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@AddExercisesPage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.AddExercisesController">
+   <children>
+      <Label layoutX="221.0" prefHeight="74.0" prefWidth="192.0" style="-fx-font-weight : bold;" text=" Add Exercise" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#handleBack" prefHeight="52.0" prefWidth="75.0" text="Back" />
+      <Label layoutX="183.0" layoutY="104.0" prefHeight="22.0" prefWidth="75.0" style="-fx-font-weight : bold;" text="Customer:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="customer" layoutX="268.0" layoutY="102.0" prefHeight="26.0" prefWidth="149.0" />
+      <ChoiceBox fx:id="muscleGroup" layoutX="268.0" layoutY="137.0" prefHeight="26.0" prefWidth="149.0" />
+      <Label layoutX="157.0" layoutY="139.0" style="-fx-font-weight : bold;" text="Muscle group:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="156.0" layoutY="178.0" style="-fx-font-weight : bold;" text="Exercise name:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="exercisesNameField" layoutX="269.0" layoutY="176.0" />
+      <TextField fx:id="setsField" layoutX="269.0" layoutY="209.0" />
+      <TextField fx:id="seriesField" layoutX="269.0" layoutY="243.0" />
+      <DatePicker fx:id="dueDate" layoutX="269.0" layoutY="276.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label layoutX="222.0" layoutY="211.0" style="-fx-font-weight : bold;" text="Sets:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="211.0" layoutY="245.0" style="-fx-font-weight : bold;" text="Series:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="278.0" style="-fx-font-weight : bold;" text="Due date:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="submitButton" layoutX="348.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="38.0" prefWidth="82.0" style="-fx-background-color: transparent ;" text="Submit" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Text fx:id="messageText" fill="WHITE" layoutX="269.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.39999999999998" />
+   </children>
+</AnchorPane>
