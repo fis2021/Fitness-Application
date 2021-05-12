@@ -16,7 +16,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Button fx:id="addExecicesButton" layoutX="488.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleAddExercises" prefHeight="50.0" prefWidth="104.0" text="Add Exercises" />
+      <Button fx:id="addExercisesButton" layoutX="488.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleAddExercises" prefHeight="50.0" prefWidth="104.0" text="Add Exercises" />
       <Button fx:id="logOutButton" layoutX="17.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleLogOut" prefHeight="50.0" prefWidth="86.0" text="Log out" />
    </children>
 </AnchorPane>

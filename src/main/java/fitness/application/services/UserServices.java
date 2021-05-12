@@ -23,6 +23,7 @@ import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 public class UserServices {
     public static ObjectRepository<Customer> customerRepository;
     public static ObjectRepository<Trainer> trainerRepository;
+    public static ObjectRepository<Exercise> exerciseRepository;
 
     private static String loggedInUsername = "";
 
@@ -39,6 +40,7 @@ public class UserServices {
                 .openOrCreate("admin", "admin");
         customerRepository = database.getRepository(Customer.class);
         trainerRepository = database.getRepository(Trainer.class);
+        exerciseRepository = database.getRepository(Exercise.class);
 
     }
     public static void addCustomer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword, emptyFieldException {
@@ -55,6 +57,13 @@ public class UserServices {
         if(password.length()<3) throw new incorrectPassword();
         checkEmptyFields(username, fullName, password, email, role);
         trainerRepository.insert(new Trainer(username,email,encodePassword(username, password),fullName,role));
+    }
+
+    public static void addExercise(String trainerName, String customerUsername, String muscleGroup, String exerciseName, String sets,String series, int year, int month, int day) throws emptyFieldException {
+        checkEmptyFieldsAddExercise(customerUsername,muscleGroup,exerciseName,sets,series,year);
+        String customer = getCustomerUsername(customerUsername);
+        String trainer = getTrainerName();
+        exerciseRepository.insert(new Exercise(trainer, customer, muscleGroup, exerciseName, sets, series, year, month, day));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws usernameAlreadyExists{
@@ -141,6 +150,21 @@ public class UserServices {
             throw new emptyFieldException();
     }
 
+    public static void checkEmptyFieldsAddExercise(String username, String muscleGroup,String exerciseName,String sets,String series,int year) throws emptyFieldException {
+        if (Objects.equals(username, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(muscleGroup, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(exerciseName, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(sets, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(series, ""))
+            throw new emptyFieldException();
+        else if (Objects.equals(year, 0))
+            throw new emptyFieldException();
+    }
+
 
     public static List CustomerList() {
         List<Customer> customer = new ArrayList<>();
@@ -148,6 +172,31 @@ public class UserServices {
             customer.add(user);
         }
         return customer;
+    }
+
+    public static List CustomerListUsername() {
+        List<String> customers = new ArrayList<>();
+        for (Customer user : customerRepository.find()) {
+             customers.add(user.getUsername());
+        }
+        return customers;
+    }
+
+    public static String getTrainerName() {
+        for (Trainer user : trainerRepository.find()) {
+            if (Objects.equals(loggedInUsername, user.getUsername())) {
+                return user.getUsername();
+            }
+        }
+        return null;
+    }
+
+    public static String getCustomerUsername(String customeUsername) {
+        for (Customer user : customerRepository.find()) {
+            if (Objects.equals(customeUsername, user.getUsername()))
+                return user.getUsername();
+        }
+        return null;
     }
 
     public static String encodePassword(String salt, String password) {

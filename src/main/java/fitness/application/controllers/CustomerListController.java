@@ -57,6 +57,10 @@ public class CustomerListController implements Initializable {
         window.setScene(new Scene(root, 509,339));
     }
 
-    public void handleAddExercises(MouseEvent mouseEvent) {
+    public void handleAddExercises(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/AddExercisesPage.fxml"));
+        Stage window = (Stage) addExercisesButton.getScene().getWindow();
+        window.setTitle("Add Exercises");
+        window.setScene(new Scene(root, 600, 400));
     }
 }
