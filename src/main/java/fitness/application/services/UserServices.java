@@ -174,6 +174,16 @@ public class UserServices {
         return customer;
     }
 
+    public static List ExercisesList() {
+        List<Exercise> exercises = new ArrayList<>();
+        for (Exercise ex : exerciseRepository.find()) {
+            if(ex.getCustomerUsername().equals(loggedInUsername)) {
+                exercises.add(ex);
+            }
+        }
+        return exercises;
+    }
+
     public static List CustomerListUsername() {
         List<String> customers = new ArrayList<>();
         for (Customer user : customerRepository.find()) {

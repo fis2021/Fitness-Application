@@ -11,7 +11,7 @@ public class Exercise {
     private int year;
     private int month;
     private int day;
-
+    private String dueDate;
     public Exercise(){}
 
     public Exercise(String trainerName,String customerUsername,String muscleGroup,String exerciseName,String sets,String series, int year,int month,int day){
@@ -24,6 +24,7 @@ public class Exercise {
         this.year=year;
         this.month=month;
         this.day=day;
+        this.dueDate=day+"/"+month+"/"+year;
     }
 
     public String getCustomerUsername() {
@@ -97,4 +98,8 @@ public class Exercise {
     public void setDay(int day) {
         this.day = day;
     }
+
+    public String getDueDate() {return dueDate;}
+
+    public void setDueDate(int day, int month, int year) {this.dueDate=day+"/"+month+"/"+year;}
 }
