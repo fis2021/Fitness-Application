@@ -1,0 +1,8 @@
+.body1{
+    -fx-background-image: url('cbg.jpg') ;
+    -fx-background-size: cover ;
+}
+.body2{
+    -fx-background-image: url('chatbg.png') ;
+    -fx-background-size: cover ;
+}

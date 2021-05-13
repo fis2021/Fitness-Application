@@ -8,9 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import fitness.application.user.*;
 import fitness.application.services.*;
-import fitness.application.controllers.RegisterController;
 
 import java.io.IOException;
 
@@ -18,7 +16,7 @@ import java.io.IOException;
 public class MainPageController {
 
     @FXML
-    Button exitButton,logOutButton,myProfileButton;
+    Button exitButton,logOutButton,myProfileButton,chatButton;
     @FXML
     private Text welcomeText;
     public void initialize() throws IOException {
@@ -47,6 +45,13 @@ public class MainPageController {
         Parent root = FXMLLoader.load(getClass().getResource("/MyExercisesPage.fxml"));
         Stage  window = (Stage)myProfileButton.getScene().getWindow();
         window.setTitle("My Exercises");
+        window.setScene(new Scene(root, 600,400));
+    }
+
+    public void handleChat(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/ChatCustomerPage.fxml"));
+        Stage  window = (Stage)chatButton.getScene().getWindow();
+        window.setTitle("Chat");
         window.setScene(new Scene(root, 600,400));
     }
 

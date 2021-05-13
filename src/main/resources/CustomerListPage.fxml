@@ -18,6 +18,7 @@
       </Label>
       <Button fx:id="addExercisesButton" layoutX="477.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleAddExercises" prefHeight="50.0" prefWidth="115.0" text="Add Exercises" />
       <Button fx:id="logOutButton" layoutX="17.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleLogOut" prefHeight="50.0" prefWidth="86.0" text="Log out" />
-      <Button fx:id="removeButton" onMouseClicked="#handleRemoveExercises" layoutX="348.0" layoutY="335.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" text="Remove Exercises" />
+      <Button fx:id="removeButton" layoutX="348.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#handleRemoveExercises" prefHeight="50.0" prefWidth="115.0" text="Remove Exercises" />
+      <Button fx:id="chatButton" onMouseClicked="#handleChat" layoutX="518.0" layoutY="16.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="67.0" text="Chat" />
    </children>
 </AnchorPane>
