@@ -24,6 +24,8 @@ public class UserServices {
     public static ObjectRepository<Customer> customerRepository;
     public static ObjectRepository<Trainer> trainerRepository;
     public static ObjectRepository<Exercise> exerciseRepository;
+    public static ObjectRepository<Chat> chatRepository;
+
 
     private static String loggedInUsername = "";
 
@@ -41,6 +43,7 @@ public class UserServices {
         customerRepository = database.getRepository(Customer.class);
         trainerRepository = database.getRepository(Trainer.class);
         exerciseRepository = database.getRepository(Exercise.class);
+        chatRepository = database.getRepository(Chat.class);
 
     }
     public static void addCustomer(String username,String email, String password,String fullName, String role) throws usernameAlreadyExists,incorrectUsername, incorrectPassword, emptyFieldException {
@@ -64,6 +67,23 @@ public class UserServices {
         String customer = getCustomerUsername(customerUsername);
         String trainer = getTrainerName();
         exerciseRepository.insert(new Exercise(trainer, customer, muscleGroup, exerciseName, sets, series, year, month, day));
+    }
+    public static void addChat(String sender,String reciever,String message) throws emptyFieldException {
+        checkEmptyFieldsChat(message);
+        if (FindTheChat(sender+reciever)==true)
+        {
+            String text = FindTheChatObj(sender+reciever).getFinalMessage()+"\n"+message;
+            Chat c = new Chat(sender+reciever, text);
+            chatRepository.update(c);
+        }
+        else if(FindTheChat(reciever+sender)==true)
+        {
+            String text = FindTheChatObj(reciever+sender).getFinalMessage()+"\n"+message;
+            Chat c = new Chat(reciever+sender, text);
+            chatRepository.update(c);
+        }
+        else chatRepository.insert(new Chat(sender+reciever,message));
+
     }
 
     public static void removeExercise(String exerciseName) {
@@ -144,6 +164,24 @@ public class UserServices {
         return a;
     }
 
+    public static boolean FindTheChat(String name) {
+        Chat c=new Chat();
+        for (Chat chat : chatRepository.find()) {
+            if (Objects.equals(name, chat.getName()))
+                return true;
+        }
+        return false;
+    }
+
+    public static Chat FindTheChatObj(String name) {
+        Chat c=new Chat();
+        for (Chat chat : chatRepository.find()) {
+            if (Objects.equals(name, chat.getName()))
+                c=chat;
+        }
+        return c;
+    }
+
     public static void checkEmptyFields(String username, String fullName, String password, String email, String role) throws emptyFieldException {
         if (Objects.equals(username, ""))
             throw new emptyFieldException();
@@ -179,6 +217,11 @@ public class UserServices {
             throw new emptyFieldException();
     }
 
+    public static void checkEmptyFieldsChat(String message) throws emptyFieldException {
+        if (Objects.equals(message, ""))
+            throw new emptyFieldException();
+    }
+
 
     public static List CustomerList() {
         List<Customer> customer = new ArrayList<>();
@@ -205,6 +248,17 @@ public class UserServices {
         }
         return exercises;
     }
+
+    public static List ChatList() {
+        List<Chat> chat = new ArrayList<>();
+        for (Chat c : chatRepository.find()) {
+            if(c.getSender().equals(loggedInUsername)) {
+                chat.add(c);
+            }
+        }
+        return chat;
+    }
+
 
     public static List CustomerListUsername() {
         List<String> customers = new ArrayList<>();
@@ -241,9 +295,9 @@ public class UserServices {
         return null;
     }
 
-    public static String getCustomerUsername(String customeUsername) {
+    public static String getCustomerUsername(String customerUsername) {
         for (Customer user : customerRepository.find()) {
-            if (Objects.equals(customeUsername, user.getUsername()))
+            if (Objects.equals(customerUsername, user.getUsername()))
                 return user.getUsername();
         }
         return null;

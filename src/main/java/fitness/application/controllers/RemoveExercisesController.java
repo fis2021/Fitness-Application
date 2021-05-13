@@ -35,7 +35,7 @@ public class RemoveExercisesController {
 
     }
 
-    public void handleSelect(javafx.scene.input.MouseEvent mouseEvent) throws selectCustomerExeption,IOException {
+    public void handleSelect(javafx.scene.input.MouseEvent mouseEvent) throws selectCustomerExeption{
        try {
            if (customerBox.getValue() == null)
                throw new selectCustomerExeption();
