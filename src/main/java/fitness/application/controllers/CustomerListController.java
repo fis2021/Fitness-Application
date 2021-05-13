@@ -11,12 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import fitness.application.user.*;
 import fitness.application.services.*;
-import fitness.application.controllers.RegisterController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class CustomerListController implements Initializable {
     @FXML
-    Button logOutButton,addExercisesButton,removeButton;
+    Button logOutButton,addExercisesButton,removeButton,chatButton;
 
     @FXML
     private TableView customersTable;
@@ -69,5 +66,12 @@ public class CustomerListController implements Initializable {
         Stage window = (Stage) removeButton.getScene().getWindow();
         window.setTitle("Remove Exercises");
         window.setScene(new Scene(root, 600, 400));
+    }
+
+    public void handleChat(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/ChatTrainerPage.fxml"));
+        Stage  window = (Stage)chatButton.getScene().getWindow();
+        window.setTitle("Chat");
+        window.setScene(new Scene(root, 600,400));
     }
 }

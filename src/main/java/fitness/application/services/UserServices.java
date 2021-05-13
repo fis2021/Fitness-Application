@@ -188,6 +188,14 @@ public class UserServices {
         return customer;
     }
 
+    public static List TrainerList() {
+        List<Trainer> trainers = new ArrayList<>();
+        for (Trainer user : trainerRepository.find()) {
+            trainers.add(user);
+        }
+        return trainers;
+    }
+
     public static List ExercisesList() {
         List<Exercise> exercises = new ArrayList<>();
         for (Exercise ex : exerciseRepository.find()) {
@@ -204,6 +212,14 @@ public class UserServices {
              customers.add(user.getUsername());
         }
         return customers;
+    }
+
+    public static List TrainerListUsername() {
+        List<String> trainers = new ArrayList<>();
+        for (Trainer user : trainerRepository.find()) {
+            trainers.add(user.getUsername());
+        }
+        return trainers;
     }
 
     public static List ExercisesNameList(String username) {

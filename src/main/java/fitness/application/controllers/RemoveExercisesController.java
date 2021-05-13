@@ -60,8 +60,8 @@ public class RemoveExercisesController {
             if(exerciseBox.getValue()==null)
                 throw new emptyFieldException();
             UserServices.removeExercise((String) exerciseBox.getValue());
-            exerciseBox.getItems().remove((String)exerciseBox.getValue());
             messageText.setText("Exercise " + (String)exerciseBox.getValue() + " was removed! ");
+            exerciseBox.getItems().remove((String)exerciseBox.getValue());
             exerciseBox.setValue(null);
         }catch(emptyFieldException e){
             messageText.setText(e.getMessage());
