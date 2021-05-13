@@ -1,10 +1,11 @@
 package fitness.application.user;
+import org.dizitart.no2.objects.Id;
 
 public class Exercise {
-
     private String trainerName;
     private String customerUsername;
     private String muscleGroup;
+    @Id
     private String exerciseName;
     private String sets;
     private String series;

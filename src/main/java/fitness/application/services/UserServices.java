@@ -66,6 +66,11 @@ public class UserServices {
         exerciseRepository.insert(new Exercise(trainer, customer, muscleGroup, exerciseName, sets, series, year, month, day));
     }
 
+    public static void removeExercise(String exerciseName) {
+        Exercise exercise=FindTheExercise(exerciseName);
+        exerciseRepository.remove(exercise);
+    }
+
     private static void checkUserDoesNotAlreadyExist(String username) throws usernameAlreadyExists{
         for (User user : customerRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
@@ -125,6 +130,15 @@ public class UserServices {
         }
         for (User user : trainerRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
+                a=user;
+        }
+        return a;
+    }
+
+    public static Exercise FindTheExercise(String exerciseName){
+        Exercise a=new Exercise();
+        for (Exercise user : exerciseRepository.find()) {
+            if (Objects.equals(exerciseName, user.getExerciseName()))
                 a=user;
         }
         return a;
@@ -190,6 +204,16 @@ public class UserServices {
              customers.add(user.getUsername());
         }
         return customers;
+    }
+
+    public static List ExercisesNameList(String username) {
+        List<String> exercises = new ArrayList<>();
+        for (Exercise ex : exerciseRepository.find()) {
+            if(ex.getCustomerUsername().equals(username)) {
+                exercises.add(ex.getExerciseName());
+            }
+        }
+        return exercises;
     }
 
     public static String getTrainerName() {
