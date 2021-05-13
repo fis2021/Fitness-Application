@@ -32,7 +32,14 @@ public class EditMyProfileController {
     public ChoiceBox gender;
 
     @FXML
-    public void initialize() { gender.getItems().addAll("Male", "Female"); }
+    public void initialize() {
+        gender.getItems().addAll("Male", "Female");
+        heightField.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getHeight());
+        weightField.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getWeight());
+        ageField.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getAge());
+        gender.setValue(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getGender());
+        descriptionField.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getDescription());
+    }
 
     public void handleBack(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/MyProfilePage.fxml"));

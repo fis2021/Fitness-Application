@@ -59,7 +59,13 @@ public class AddExercisesController {
                 day = date.getDayOfMonth();
             }
             UserServices.addExercise(UserServices.getLoggedInUsername(), (String)customer.getValue(), (String)muscleGroup.getValue(), exercisesNameField.getText(), setsField.getText(),seriesField.getText(),year, month, day);
-            messageText.setText("Execise was successfully added!");
+            messageText.setText("Exercise was successfully added!");
+            customer.setValue(null);
+            muscleGroup.setValue(null);
+            exercisesNameField.setText("");
+            setsField.setText("");
+            seriesField.setText("");
+            dueDate.setValue(null);
         } catch (emptyFieldException e) {
             messageText.setText("You cannot leave empty text fields!");
         }

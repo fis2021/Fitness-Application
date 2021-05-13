@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class CustomerListController implements Initializable {
     @FXML
-    Button logOutButton,addExercisesButton;
+    Button logOutButton,addExercisesButton,removeButton;
 
     @FXML
     private TableView customersTable;
@@ -61,6 +61,13 @@ public class CustomerListController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/AddExercisesPage.fxml"));
         Stage window = (Stage) addExercisesButton.getScene().getWindow();
         window.setTitle("Add Exercises");
+        window.setScene(new Scene(root, 600, 400));
+    }
+
+    public void handleRemoveExercises(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/RemoveExercisesPage.fxml"));
+        Stage window = (Stage) removeButton.getScene().getWindow();
+        window.setTitle("Remove Exercises");
         window.setScene(new Scene(root, 600, 400));
     }
 }
