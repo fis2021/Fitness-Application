@@ -9,22 +9,18 @@
       <Button fx:id="backButton" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#handleBack" prefHeight="48.0" prefWidth="84.0" text="Back" />
       <VBox layoutX="14.0" layoutY="14.0">
          <children>
-            <TableView prefHeight="264.0" prefWidth="350.0">
-               <columns>
-                  <TableColumn fx:id="chatColumn" prefWidth="349.6000122070312" text="Chat" />
-               </columns>
-            </TableView>
+            <TableView fx:id="chatTable" prefHeight="264.0" prefWidth="350.0" />
          </children>
       </VBox>
-      <TextField layoutX="14.0" layoutY="286.0" prefHeight="26.0" prefWidth="293.0" promptText="Enter your message" />
-      <Button layoutX="322.0" layoutY="287.0" mnemonicParsing="false" text="Send" />
+      <TextField fx:id="enterMessage" layoutX="14.0" layoutY="286.0" prefHeight="26.0" prefWidth="293.0" promptText="Enter your message" />
+      <Button fx:id="sendButton" layoutX="322.0" layoutY="287.0" mnemonicParsing="false" onMouseClicked="#handleSend" text="Send" />
       <ChoiceBox fx:id="trainerBox" layoutX="152.0" layoutY="338.0" prefWidth="150.0" />
       <Label layoutX="152.0" layoutY="314.0" text="Select trainer:" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="316.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Select" />
+      <Button fx:id="selectButton" layoutX="316.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#handleSelect" prefHeight="26.0" prefWidth="50.0" text="Select" />
       <Text fx:id="messageText" fill="WHITE" layoutX="104.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="342.6000000000001" />
    </children>
 </AnchorPane>
