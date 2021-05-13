@@ -43,4 +43,11 @@ public class MainPageController {
         window.setScene(new Scene(root, 600,400));
     }
 
+    public void handleMyExercises(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/MyExercisesPage.fxml"));
+        Stage  window = (Stage)myProfileButton.getScene().getWindow();
+        window.setTitle("My Exercises");
+        window.setScene(new Scene(root, 600,400));
+    }
+
 }

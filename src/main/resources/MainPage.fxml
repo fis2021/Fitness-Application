@@ -23,7 +23,7 @@
       </Text>
       <Button fx:id="logOutButton" layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#handleLogOut" prefHeight="51.0" prefWidth="68.0" text="Log Out" />
       <Text fx:id="welcomeText" fill="WHITE" layoutX="27.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome " wrappingWidth="84.13671112060547" />
-      <Button fx:id="myExercisesButton" layoutX="442.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="116.0" text="My Exercises">
+      <Button fx:id="myExercisesButton" onMouseClicked="#handleMyExercises" layoutX="442.0" layoutY="63.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="116.0" text="My Exercises">
          <font>
             <Font size="16.0" />
          </font>
