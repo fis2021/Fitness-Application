@@ -13,9 +13,9 @@ import fitness.application.services.*;
 import java.io.IOException;
 public class MyProfileController {
     @FXML
-    Text heightText,weightText,ageText,genderText,descriptionText;
+    private Text heightText,weightText,ageText,genderText,descriptionText;
     @FXML
-    Button mainPageButton, editProfileButton;
+    private Button mainPageButton, editProfileButton;
 
     public void initialize() {
         heightText.setText(((Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername())).getHeight());

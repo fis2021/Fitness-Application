@@ -14,9 +14,9 @@ import java.io.IOException;
 
 public class RemoveExercisesController {
     @FXML
-    public Button backButton,removeButton;
+    private Button backButton,removeButton;
     @FXML
-    public ChoiceBox customerBox,exerciseBox;
+    private ChoiceBox customerBox,exerciseBox;
     @FXML
     private Text messageText;
     @FXML
@@ -25,13 +25,13 @@ public class RemoveExercisesController {
 
     }
 
-    public void handleSelect(javafx.scene.input.MouseEvent mouseEvent) throws selectCustomerExeption{
+    public void handleSelect(javafx.scene.input.MouseEvent mouseEvent) throws selectUserExeption {
        try {
            if (customerBox.getValue() == null)
-               throw new selectCustomerExeption();
+               throw new selectUserExeption();
            exerciseBox.getItems().addAll(UserServices.ExercisesNameList((String) customerBox.getValue()));
            messageText.setText("Customer " + (String)customerBox.getValue() + " was selected! ");
-       }catch(selectCustomerExeption e){
+       }catch(selectUserExeption e){
            messageText.setText(e.getMessage());
        }
     }

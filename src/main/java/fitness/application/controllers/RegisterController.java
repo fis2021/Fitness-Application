@@ -34,6 +34,9 @@ public class RegisterController {
     @FXML
     private Text registerMessage;
     @FXML
+    private Button backButton;
+
+    @FXML
     public void initialize() {
         roleField.getItems().addAll("Customer", "Trainer");
     }
@@ -46,10 +49,20 @@ public class RegisterController {
             else if(((String) roleField.getValue()).equals("Customer")) {
                 UserServices.addCustomer(usernameField.getText(), emailField.getText(), passwordField.getText(), nameField.getText(), (String) roleField.getValue());
                 registerMessage.setText("Account created successfully!");
+                Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+                Stage  window = (Stage)backButton.getScene().getWindow();
+                window.setTitle("Log In");
+                window.setResizable(false);
+                window.setScene(new Scene(root, 509,339));
             }
             else if(((String) roleField.getValue()).equals("Trainer")) {
                 UserServices.addTrainer(usernameField.getText(), emailField.getText(), passwordField.getText(), nameField.getText(), (String) roleField.getValue());
                 registerMessage.setText("Account created successfully!");
+                Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
+                Stage  window = (Stage)backButton.getScene().getWindow();
+                window.setTitle("Log In");
+                window.setResizable(false);
+                window.setScene(new Scene(root, 509,339));
             }
         } catch (usernameAlreadyExists e) {
             registerMessage.setText(e.getMessage());
@@ -65,11 +78,11 @@ public class RegisterController {
         catch (emptyFieldException e)
         {
             registerMessage.setText(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @FXML
-    Button backButton;
     public void handleBack(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
         Stage  window = (Stage)backButton.getScene().getWindow();

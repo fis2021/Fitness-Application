@@ -8,7 +8,7 @@
    <children>
       <VBox layoutX="13.0" layoutY="77.0">
          <children>
-            <TableView fx:id="exercisesTable" prefHeight="200.0" prefWidth="573.0" />
+            <TableView fx:id="exercisesTable" prefHeight="200.0" prefWidth="575" />
          </children>
       </VBox>
       <Button fx:id="backButton" layoutX="14.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#handleBack" prefHeight="62.0" prefWidth="67.0" text="Back" />
