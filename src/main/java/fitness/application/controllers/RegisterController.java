@@ -34,6 +34,9 @@ public class RegisterController {
     @FXML
     private Text registerMessage;
     @FXML
+    private Button backButton;
+
+    @FXML
     public void initialize() {
         roleField.getItems().addAll("Customer", "Trainer");
     }
@@ -80,8 +83,6 @@ public class RegisterController {
         }
     }
 
-    @FXML
-    Button backButton;
     public void handleBack(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
         Stage  window = (Stage)backButton.getScene().getWindow();

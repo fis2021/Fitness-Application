@@ -16,9 +16,9 @@ import java.util.Objects;
 
 public class AddExercisesController {
     @FXML
-    public Button backButton;
+    private Button backButton;
     @FXML
-    public ChoiceBox customer,muscleGroup;
+    private ChoiceBox customer,muscleGroup;
     @FXML
     private DatePicker dueDate;
     @FXML
@@ -53,10 +53,10 @@ public class AddExercisesController {
                 if(UserServices.checkDateValid(day,month,year)==false)
                     throw new invalidateDateException();
             }
-            if(UserServices.checkExerciseInDataBase(exercisesNameField.getText(),(String)customer.getValue())==true)
-                throw new exerciseAlreadyExists(exercisesNameField.getText());
             if(UserServices.isStringInt(setsField.getText())==false || UserServices.isStringInt(seriesField.getText())==false)
                 throw new intException("sets and series");
+            if(UserServices.checkExerciseInDataBase(exercisesNameField.getText(),(String)customer.getValue())==true)
+                throw new exerciseAlreadyExists(exercisesNameField.getText());
             UserServices.addExercise(UserServices.getLoggedInUsername(), (String)customer.getValue(), (String)muscleGroup.getValue(), exercisesNameField.getText(), setsField.getText(),seriesField.getText(),year, month, day);
             messageText.setText("Exercise was successfully added!");
             customer.setValue(null);

@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class CustomerListController implements Initializable {
     @FXML
-    Button logOutButton,addExercisesButton,removeButton,chatButton;
+    private Button logOutButton,addExercisesButton,removeButton,chatButton;
 
     @FXML
     private TableView customersTable;

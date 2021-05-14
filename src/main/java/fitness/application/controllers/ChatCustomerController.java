@@ -1,7 +1,7 @@
 package fitness.application.controllers;
 
 import fitness.application.exceptions.emptyFieldException;
-import fitness.application.exceptions.selectCustomerExeption;
+import fitness.application.exceptions.selectUserExeption;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,9 +22,9 @@ import java.util.ResourceBundle;
 
 public class ChatCustomerController implements Initializable {
     @FXML
-    public Button backButton;
+    private Button backButton;
     @FXML
-    public ChoiceBox trainerBox;
+    private ChoiceBox trainerBox;
     @FXML
     private TableView chatTable;
     @FXML
@@ -45,12 +45,12 @@ public class ChatCustomerController implements Initializable {
         window.setScene(new Scene(root, 600,400));
     }
 
-    public void handleSelect(javafx.scene.input.MouseEvent mouseEvent) throws selectCustomerExeption {
+    public void handleSelect(javafx.scene.input.MouseEvent mouseEvent) throws selectUserExeption {
         try {
             if (trainerBox.getValue() == null)
-                throw new selectCustomerExeption();
+                throw new selectUserExeption();
             messageText.setText("Trainer " + (String)trainerBox.getValue() + " was selected! ");
-        }catch(selectCustomerExeption e){
+        }catch(selectUserExeption e){
             messageText.setText(e.getMessage());
         }
         TableColumn chat = new TableColumn("Chat");
@@ -67,7 +67,7 @@ public class ChatCustomerController implements Initializable {
         chatTable.setItems(data);
     }
 
-    public void handleSend(javafx.scene.input.MouseEvent mouseEvent) throws emptyFieldException, selectCustomerExeption {
+    public void handleSend(javafx.scene.input.MouseEvent mouseEvent) throws emptyFieldException, selectUserExeption {
         try {
             if(enterMessage.getText().equals(""))
                 throw new emptyFieldException();

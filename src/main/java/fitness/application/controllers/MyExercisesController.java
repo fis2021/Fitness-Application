@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class MyExercisesController implements Initializable {
     @FXML
-    Button backButton;
+    private Button backButton;
     @FXML
     private TableView exercisesTable;
     @FXML

@@ -16,7 +16,13 @@ import java.io.IOException;
 
 public class LoginController {
     @FXML
-    Button createAccountButton,loginButton;
+    private Button createAccountButton,loginButton;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Text loginMessage;
     public void handleCreateAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Register.fxml"));
         Stage  window = (Stage)createAccountButton.getScene().getWindow();
@@ -24,13 +30,6 @@ public class LoginController {
         window.setResizable(false);
         window.setScene(new Scene(root, 509,339));
     }
-
-    @FXML
-    TextField usernameField;
-    @FXML
-    PasswordField passwordField;
-    @FXML
-    private Text loginMessage;
     public void handleLogIn(javafx.scene.input.MouseEvent mouseEvent) throws IOException, usernameDoesNotExist, emptyFieldException {
         try {
             UserServices.checkEmptyFieldsLogIn(usernameField.getText(),passwordField.getText());

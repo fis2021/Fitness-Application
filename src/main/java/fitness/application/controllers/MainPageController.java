@@ -16,9 +16,10 @@ import java.io.IOException;
 public class MainPageController {
 
     @FXML
-    Button exitButton,logOutButton,myProfileButton,chatButton;
+    private Button exitButton,logOutButton,myProfileButton,chatButton;
     @FXML
     private Text welcomeText;
+
     public void initialize() throws IOException {
         welcomeText.setText("Welcome "+ UserServices.FindTheUser(UserServices.getLoggedInUsername()).getUsername());
     }

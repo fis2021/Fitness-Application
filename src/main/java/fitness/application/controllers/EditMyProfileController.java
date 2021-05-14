@@ -19,13 +19,13 @@ import static java.lang.Float.NaN;
 
 public class EditMyProfileController {
     @FXML
-    public Button backButton;
+    private Button backButton;
 
     @FXML
     private TextField heightField, weightField, ageField, descriptionField;
 
     @FXML
-    public ChoiceBox gender;
+    private ChoiceBox gender;
 
     @FXML
     private Text messageText;

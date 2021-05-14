@@ -69,6 +69,7 @@ public class UserServices {
         String trainer = getTrainerName();
         exerciseRepository.insert(new Exercise(trainer, customer, muscleGroup, exerciseName, sets, series, year, month, day));
     }
+
     public static void addChat(String sender,String reciever,String message) throws emptyFieldException {
         checkEmptyFieldsChat(message);
         if (FindTheChat(sender+reciever)==true)
@@ -232,9 +233,9 @@ public class UserServices {
     }
 
     public static void checkEmptyFieldsAddExercise(String username, String muscleGroup,String exerciseName,String sets,String series,int year) throws emptyFieldException {
-        if (Objects.equals(username, ""))
+        if (username== null)
             throw new emptyFieldException();
-        else if (Objects.equals(muscleGroup, ""))
+        else if (muscleGroup==null)
             throw new emptyFieldException();
         else if (Objects.equals(exerciseName, ""))
             throw new emptyFieldException();
@@ -364,4 +365,5 @@ public class UserServices {
         }
         return md;
     }
+
 }
