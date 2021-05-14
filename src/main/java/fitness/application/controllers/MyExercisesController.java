@@ -31,14 +31,19 @@ public class MyExercisesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-
         TableColumn muscleGroup = new TableColumn("Muscle Group");
         TableColumn exerciseName =  new TableColumn("Exercise Name");
         TableColumn sets = new TableColumn("Sets");
         TableColumn series = new TableColumn("Series");
         TableColumn dueDate = new TableColumn("Due date");
         TableColumn trainerName = new TableColumn("Trainer");
+        muscleGroup.setMinWidth(100);
+        exerciseName.setMinWidth(150);
+        sets.setMinWidth(50);
+        series.setMinWidth(50);
+        dueDate.setMinWidth(80);
+        trainerName.setMinWidth(145);
+
 
         exercisesTable.getColumns().addAll(muscleGroup, exerciseName,sets,series,dueDate,trainerName);
 
@@ -52,6 +57,8 @@ public class MyExercisesController implements Initializable {
 
 
         exercisesTable.setItems(data);
+
+
 
         Customer c = (Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername());
 

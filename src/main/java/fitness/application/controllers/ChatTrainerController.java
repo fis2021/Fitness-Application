@@ -69,15 +69,15 @@ public class ChatTrainerController implements Initializable {
 
     public void handleSend(javafx.scene.input.MouseEvent mouseEvent) throws emptyFieldException, selectCustomerExeption {
         try {
-            if(messageText.getText().equals(""))
+            if(enterMessage.getText().equals(""))
                 throw new emptyFieldException();
             UserServices.addChat(UserServices.getLoggedInUsername(), (String) customerBox.getValue(),UserServices.getLoggedInUsername()+": "+enterMessage.getText());
             messageText.setText("The message was successfully sent!");
             enterMessage.setText("");
+            handleSelect(mouseEvent);
         } catch (emptyFieldException e) {
             messageText.setText("You cannot leave empty text fields!");
         }
-        handleSelect(mouseEvent);
     }
 
 

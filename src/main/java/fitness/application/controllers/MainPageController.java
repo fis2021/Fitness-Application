@@ -44,6 +44,7 @@ public class MainPageController {
     }
 
     public void handleMyExercises(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        UserServices.checkExerciseExpired();
         Parent root = FXMLLoader.load(getClass().getResource("/MyExercisesPage.fxml"));
         Stage  window = (Stage)myProfileButton.getScene().getWindow();
         window.setTitle("My Exercises");

@@ -8,10 +8,12 @@ import org.dizitart.no2.objects.ObjectRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import static fitness.application.services.FileSystemServices.getPathToFile;
+import java.time.*;
 
 
 public class UserServices {
@@ -19,6 +21,11 @@ public class UserServices {
     public static ObjectRepository<Trainer> trainerRepository;
     public static ObjectRepository<Exercise> exerciseRepository;
     public static ObjectRepository<Chat> chatRepository;
+
+    private static LocalDate currentDate=LocalDate.now();
+    private static int currentDay=currentDate.getDayOfMonth();
+    private static int currentMonth=currentDate.getMonthValue();
+    private static int currentYear=currentDate.getYear();
 
 
     private static String loggedInUsername = "";
@@ -136,6 +143,15 @@ public class UserServices {
         return b;
     }
 
+    public static boolean checkExerciseInDataBase(String name,String customer){
+        boolean b=false;
+        for (Exercise ex : exerciseRepository.find()) {
+            if (Objects.equals(name, ex.getExerciseName()) && Objects.equals(customer, ex.getCustomerUsername()))
+                b=true;
+        }
+        return b;
+    }
+
     public static User FindTheUser(String username){
         User a=new User();
         for (User user : customerRepository.find()) {
@@ -174,6 +190,25 @@ public class UserServices {
                 c=chat;
         }
         return c;
+    }
+
+    public static void checkExerciseExpired(){
+        for (Exercise ex : exerciseRepository.find()) {
+            if (checkDateValid(ex.getDay(),ex.getMonth(), ex.getYear())==false)
+            {
+                exerciseRepository.remove(ex);
+            }
+        }
+    }
+
+    public static boolean checkDateValid(int day, int month,int year){
+        if(year<currentYear)
+            return false;
+        else if(year==currentYear && month<currentMonth)
+            return false;
+        else if(year==currentYear && month==currentMonth && day<currentDay)
+            return false;
+        else return true;
     }
 
     public static void checkEmptyFields(String username, String fullName, String password, String email, String role) throws emptyFieldException {
@@ -295,6 +330,18 @@ public class UserServices {
                 return user.getUsername();
         }
         return null;
+    }
+
+    public static boolean isStringInt(String s)
+    {
+        try
+        {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException ex)
+        {
+            return false;
+        }
     }
 
     public static String encodePassword(String salt, String password) {

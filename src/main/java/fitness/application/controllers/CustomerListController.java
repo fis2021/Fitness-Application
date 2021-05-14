@@ -35,6 +35,11 @@ public class CustomerListController implements Initializable {
         TableColumn age =  new TableColumn("Age");
         TableColumn gender =  new TableColumn("Gender");
         customersTable.getColumns().addAll(name, height, weight, age,gender);
+        name.setMinWidth(180);
+        height.setMinWidth(100);
+        weight.setMinWidth(100);
+        age.setMinWidth(100);
+        gender.setMinWidth(120);
 
         final ObservableList<Customer> data = FXCollections.observableArrayList(UserServices.CustomerList());
 
