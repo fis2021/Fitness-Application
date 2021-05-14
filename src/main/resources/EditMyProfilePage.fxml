@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@MyProfile.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.EditMyProfileController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="MyProfileBody" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.EditMyProfileController">
    <children>
       <Text fill="WHITE" layoutX="438.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Edit My Profile" wrappingWidth="150.63671875">
          <font>

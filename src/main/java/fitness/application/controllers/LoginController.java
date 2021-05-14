@@ -1,7 +1,6 @@
 package fitness.application.controllers;
 
 import fitness.application.exceptions.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,14 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import fitness.application.services.*;
-import fitness.application.user.User;
+import fitness.application.models.User;
 import java.io.IOException;
 
 public class LoginController {
@@ -26,6 +21,7 @@ public class LoginController {
         Parent root = FXMLLoader.load(getClass().getResource("/Register.fxml"));
         Stage  window = (Stage)createAccountButton.getScene().getWindow();
         window.setTitle("Create Account");
+        window.setResizable(false);
         window.setScene(new Scene(root, 509,339));
     }
 
@@ -47,11 +43,13 @@ public class LoginController {
                         Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
                         Stage window = (Stage) loginButton.getScene().getWindow();
                         window.setTitle("Main Page");
+                        window.setResizable(false);
                         window.setScene(new Scene(root, 600, 400));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                } else loginMessage.setText("Incorrect Password");
+                } else
+                {loginMessage.setText("Incorrect Password");passwordField.setText("");}
             }
 
 
@@ -64,11 +62,13 @@ public class LoginController {
                         Parent root = FXMLLoader.load(getClass().getResource("/CustomerListPage.fxml"));
                         Stage window = (Stage) loginButton.getScene().getWindow();
                         window.setTitle("Customer List");
+                        window.setResizable(false);
                         window.setScene(new Scene(root, 600, 400));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                } else loginMessage.setText("Incorrect Password");
+                } else
+                {loginMessage.setText("Incorrect Password");passwordField.setText("");}
             }
 
         } catch (usernameDoesNotExist e)

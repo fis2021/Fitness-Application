@@ -31,6 +31,7 @@ public class MainPageController {
         Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
         Stage  window = (Stage)logOutButton.getScene().getWindow();
         window.setTitle("Log In");
+        window.setResizable(false);
         window.setScene(new Scene(root, 509,339));
     }
 
@@ -38,6 +39,7 @@ public class MainPageController {
         Parent root = FXMLLoader.load(getClass().getResource("/MyProfilePage.fxml"));
         Stage  window = (Stage)myProfileButton.getScene().getWindow();
         window.setTitle("My Profile");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600,400));
     }
 
@@ -45,6 +47,7 @@ public class MainPageController {
         Parent root = FXMLLoader.load(getClass().getResource("/MyExercisesPage.fxml"));
         Stage  window = (Stage)myProfileButton.getScene().getWindow();
         window.setTitle("My Exercises");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600,400));
     }
 
@@ -52,6 +55,7 @@ public class MainPageController {
         Parent root = FXMLLoader.load(getClass().getResource("/ChatCustomerPage.fxml"));
         Stage  window = (Stage)chatButton.getScene().getWindow();
         window.setTitle("Chat");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600,400));
     }
 

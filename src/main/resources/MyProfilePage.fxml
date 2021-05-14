@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@MyProfile.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.MyProfileController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="MyProfileBody" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.MyProfileController">
     <Text fill="WHITE" layoutX="438.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="My Profile" wrappingWidth="150.63671875">
         <font>
             <Font size="30.0" />
@@ -39,7 +39,7 @@
    <Text fx:id="weightText" fill="WHITE" layoutX="142.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="-----" wrappingWidth="36.99999999999994" />
    <Text fx:id="ageText" fill="WHITE" layoutX="142.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="-----" wrappingWidth="36.99999999999994" />
    <Text fx:id="genderText" fill="WHITE" layoutX="142.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="----------" wrappingWidth="63.13671875" />
-   <Text fx:id="descriptionText" fill="WHITE" layoutX="145.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your description" wrappingWidth="135.13671874999994" />
+   <Text fx:id="descriptionText" fill="WHITE" layoutX="145.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Your description" wrappingWidth="135.13671874999994" />
    <Button fx:id="mainPageButton" layoutX="14.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#handleMainPage" prefHeight="57.0" prefWidth="74.0" text="Main Page" />
    <Button fx:id="editProfileButton" layoutX="513.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#handleEditProfile" prefHeight="58.0" prefWidth="74.0" text="Edit Profile" />
 </AnchorPane>

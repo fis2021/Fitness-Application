@@ -1,4 +1,4 @@
-package fitness.application.user;
+package fitness.application.models;
 
 import org.dizitart.no2.objects.InheritIndices;
 

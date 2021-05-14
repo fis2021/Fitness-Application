@@ -4,12 +4,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400" prefWidth="500.0" styleClass="body" stylesheets="@LoginRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.LoginController">
+<AnchorPane prefHeight="400" prefWidth="500.0" styleClass="LoginRegisterBody" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.LoginController">
    <children>
       <Button fx:id="loginButton" layoutX="250.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#handleLogIn" text="Log In" />
       <TextField fx:id="usernameField" layoutX="201.0" layoutY="119.0" promptText="Username" />
       <PasswordField fx:id="passwordField" layoutX="201.0" layoutY="157.0" promptText="Password" />
       <Button fx:id="createAccountButton" layoutX="238.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#handleCreateAccount" prefHeight="26.0" prefWidth="137.0" style="-fx-background-color: transparent ; -fx-font-weight : bold;" text="Create Account" textFill="#FFFFFF" underline="true" />
-      <Text fx:id="loginMessage" fill="WHITE" layoutX="216.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="117.0" />
+      <Text fx:id="loginMessage" style="-fx-font-weight : bold;" fill="WHITE" layoutX="126.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="297.0" />
    </children>
 </AnchorPane>

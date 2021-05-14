@@ -1,23 +1,17 @@
 package fitness.application.services;
 
-import fitness.application.user.*;
-import fitness.application.services.*;
+import fitness.application.models.*;
 import fitness.application.exceptions.*;
 import org.dizitart.no2.Nitrite;
-import org.dizitart.no2.RemoveOptions;
-import org.dizitart.no2.exceptions.NitriteIOException;
-import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
 
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import static fitness.application.services.FileSystemServices.getPathToFile;
-import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 
 public class UserServices {
