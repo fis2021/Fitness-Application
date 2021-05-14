@@ -49,7 +49,7 @@ public class ChatTrainerController implements Initializable {
         try {
             if (customerBox.getValue() == null)
                 throw new selectUserExeption();
-            messageText.setText("Trainer " + (String)customerBox.getValue() + " was selected! ");
+            messageText.setText("Customer " + (String)customerBox.getValue() + " was selected! ");
         }catch(selectUserExeption e){
             messageText.setText(e.getMessage());
         }
