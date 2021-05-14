@@ -2,21 +2,19 @@ package fitness.application.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import fitness.application.user.*;
+import fitness.application.models.*;
 import fitness.application.services.*;
-import fitness.application.controllers.RegisterController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +26,8 @@ public class MyExercisesController implements Initializable {
     Button backButton;
     @FXML
     private TableView exercisesTable;
+    @FXML
+    private Text bmrText;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -53,13 +53,28 @@ public class MyExercisesController implements Initializable {
 
         exercisesTable.setItems(data);
 
+        Customer c = (Customer) UserServices.FindTheUser(UserServices.getLoggedInUsername());
 
+        if(c.getGender()==null || c.getHeight()==null || c.getWeight()==null || c.getAge()==null || c.getHeight().equals("") || c.getWeight().equals("") || c.getAge().equals("") )
+        {
+            bmrText.setText("Go to My Profile page to set up your account");
+        }else if(c.getGender().equals("Female"))
+        {
+            double bmr = 10 * Integer.parseInt(c.getWeight()) + 6.25 * Integer.parseInt(c.getHeight()) - 5 * Integer.parseInt(c.getAge()) -161;
+            bmrText.setText("You need to eat "+(int)bmr+" calories per day!");
+        }
+        else if(c.getGender().equals("Male"))
+        {
+            double bmr = 10 * Integer.parseInt(c.getWeight()) + 6.25 * Integer.parseInt(c.getHeight()) - 5 * Integer.parseInt(c.getAge()) +5;
+            bmrText.setText("You need to eat "+(int)bmr+" calories per day!");
+        }
     }
 
     public void handleBack(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
         Stage window = (Stage)backButton.getScene().getWindow();
         window.setTitle("Main Page");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600,400));
     }
 }

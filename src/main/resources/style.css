@@ -1,0 +1,34 @@
+.LoginRegisterBody{
+    -fx-background-image: url('fitbg2.jpg') ;
+    -fx-background-size: cover ;
+}
+
+.AddExercisePageBody{
+    -fx-background-image: url('adbg.jpg') ;
+    -fx-background-size: cover ;
+}
+
+.ChatPageBody{
+    -fx-background-image: url('cbg.jpg') ;
+    -fx-background-size: cover ;
+}
+
+.CustomerListBody{
+    -fx-background-image: url('clbg.jpg') ;
+    -fx-background-size: cover ;
+}
+
+.MyExercisesBody{
+    -fx-background-image: url('myexercisesbg.jpg') ;
+    -fx-background-size: cover ;
+}
+
+.MyProfileBody{
+    -fx-background-image: url('myprofile.jpg') ;
+    -fx-background-size: cover ;
+}
+
+.MainPageBody{
+    -fx-background-image: url('mpbg.jpg') ;
+    -fx-background-size: cover ;
+}

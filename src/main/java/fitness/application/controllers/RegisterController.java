@@ -74,6 +74,7 @@ public class RegisterController {
         Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
         Stage  window = (Stage)backButton.getScene().getWindow();
         window.setTitle("Log In");
+        window.setResizable(false);
         window.setScene(new Scene(root, 509,339));
 
     }

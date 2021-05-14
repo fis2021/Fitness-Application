@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body1" stylesheets="@ChatPage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.ChatTrainerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="ChatPageBody" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.ChatTrainerController">
     <children>
         <Button fx:id="backButton" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#handleBack" prefHeight="48.0" prefWidth="84.0" text="Back" />
       <VBox layoutX="14.0" layoutY="14.0">
@@ -21,6 +21,6 @@
          </font>
       </Label>
       <Button fx:id="selectButton" layoutX="316.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#handleSelect" prefHeight="26.0" prefWidth="50.0" text="Select" />
-      <Text fx:id="messageText" fill="WHITE" layoutX="104.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="342.6000000000001" />
+      <Text fx:id="messageText" style="-fx-font-weight : bold;" fill="WHITE" layoutX="104.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="342.6000000000001" />
     </children>
 </AnchorPane>

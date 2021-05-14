@@ -4,20 +4,17 @@ import fitness.application.exceptions.emptyFieldException;
 import fitness.application.exceptions.selectCustomerExeption;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import fitness.application.user.*;
+import fitness.application.models.*;
 import fitness.application.services.*;
-import fitness.application.controllers.RegisterController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +41,7 @@ public class ChatTrainerController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/CustomerListPage.fxml"));
         Stage window = (Stage)backButton.getScene().getWindow();
         window.setTitle("Customer List");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600,400));
     }
 

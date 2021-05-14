@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@CustomerList.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.CustomerListController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="CustomerListBody" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.CustomerListController">
    <children>
       <VBox layoutY="58.0">
          <children>
-            <TableView fx:id="customersTable" prefHeight="257.0" prefWidth="600.0" styleClass="body" stylesheets="@CustomerList.css" />
+            <TableView fx:id="customersTable" prefHeight="257.0" prefWidth="600.0" styleClass="CustomerListBody" stylesheets="@style.css" />
          </children>
       </VBox>
       <Label layoutX="14.0" layoutY="7.0" prefHeight="50.0" prefWidth="180.0" text="Customer List" textFill="WHITE">

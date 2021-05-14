@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400" prefWidth="500.0" styleClass="body" stylesheets="@LoginRegister.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.RegisterController">
+<AnchorPane prefHeight="400" prefWidth="500.0" styleClass="LoginRegisterBody" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.RegisterController">
    <children>
       <Button fx:id="createAccount" layoutX="291.0" layoutY="251.0" mnemonicParsing="false" onMouseClicked="#handleRegister" style="-fx-font-weight : bold;" text="Create Account" />
       <Button fx:id="backButton" layoutX="239.0" layoutY="251.0" mnemonicParsing="false" onMouseClicked="#handleBack" style="-fx-font-weight : bold;" text="Back" />
@@ -18,6 +18,6 @@
       <Text fill="WHITE" layoutX="182.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Password" />
       <Text fill="WHITE" layoutX="193.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="E-mail" wrappingWidth="59.5625" />
       <Text fill="WHITE" layoutX="210.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" text="Role" />
-      <Text fx:id="registerMessage" fill="WHITE" layoutX="250.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" wrappingWidth="127.13670349121094" />
+      <Text fx:id="registerMessage" fill="WHITE" layoutX="156.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight : bold;" textAlignment="CENTER" wrappingWidth="313.13670349121094" />
    </children>
 </AnchorPane>

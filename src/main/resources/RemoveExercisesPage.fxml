@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@AddExercisesPage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.RemoveExercisesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="AddExercisePageBody" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitness.application.controllers.RemoveExercisesController">
    <children>
       <Label layoutX="155.0" layoutY="138.0" style="-fx-font-weight : bold;" text="Customer:" textFill="WHITE">
          <font>
@@ -20,7 +20,7 @@
       <ChoiceBox fx:id="exerciseBox" layoutX="240.0" layoutY="173.0" prefHeight="26.0" prefWidth="150.0" />
       <Button fx:id="removeButton" layoutX="323.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#handleRemove" prefHeight="26.0" prefWidth="66.0" text="Remove" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#handleBack" prefHeight="54.0" prefWidth="77.0" text="Back" />
-      <Text fx:id="messageText" fill="WHITE" layoutX="3.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="600.0">
+      <Text fx:id="messageText" style="-fx-font-weight : bold;" fill="WHITE" layoutX="3.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font size="15.0" />
          </font>

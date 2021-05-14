@@ -1,5 +1,4 @@
-package fitness.application.user;
-import fitness.application.services.UserServices;
+package fitness.application.models;
 import org.dizitart.no2.objects.Id;
 
 public class Chat {

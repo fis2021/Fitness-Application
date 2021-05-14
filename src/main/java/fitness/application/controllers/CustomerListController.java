@@ -12,7 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import fitness.application.user.*;
+import fitness.application.models.*;
 import fitness.application.services.*;
 
 import java.io.IOException;
@@ -51,6 +51,7 @@ public class CustomerListController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
         Stage window = (Stage)logOutButton.getScene().getWindow();
         window.setTitle("Log In");
+        window.setResizable(false);
         window.setScene(new Scene(root, 509,339));
     }
 
@@ -58,6 +59,7 @@ public class CustomerListController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/AddExercisesPage.fxml"));
         Stage window = (Stage) addExercisesButton.getScene().getWindow();
         window.setTitle("Add Exercises");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600, 400));
     }
 
@@ -65,6 +67,7 @@ public class CustomerListController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/RemoveExercisesPage.fxml"));
         Stage window = (Stage) removeButton.getScene().getWindow();
         window.setTitle("Remove Exercises");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600, 400));
     }
 
@@ -72,6 +75,7 @@ public class CustomerListController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/ChatTrainerPage.fxml"));
         Stage  window = (Stage)chatButton.getScene().getWindow();
         window.setTitle("Chat");
+        window.setResizable(false);
         window.setScene(new Scene(root, 600,400));
     }
 }
