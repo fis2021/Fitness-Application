@@ -132,7 +132,7 @@ public class UserServices {
         }
     }
 
-    public static boolean checkExerciseInDataBase(String name,String customer){
+    public static boolean checkExerciseInDataBase(String name,String customer) {
         boolean b=false;
         for (Exercise ex : exerciseRepository.find()) {
             if (Objects.equals(name, ex.getExerciseName()) && Objects.equals(customer, ex.getCustomerUsername()))
