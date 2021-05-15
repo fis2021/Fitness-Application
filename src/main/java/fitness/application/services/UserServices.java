@@ -67,8 +67,7 @@ public class UserServices {
     public static void addExercise(String trainerName, String customerUsername, String muscleGroup, String exerciseName, String sets,String series, int year, int month, int day) throws emptyFieldException {
         checkEmptyFieldsAddExercise(customerUsername,muscleGroup,exerciseName,sets,series,year);
         String customer = getCustomerUsername(customerUsername);
-        String trainer = getTrainerName();
-        exerciseRepository.insert(new Exercise(trainer, customer, muscleGroup, exerciseName, sets, series, year, month, day));
+        exerciseRepository.insert(new Exercise(trainerName, customer, muscleGroup, exerciseName, sets, series, year, month, day));
     }
 
     public static void addChat(String sender,String reciever,String message) throws emptyFieldException {
@@ -108,6 +107,7 @@ public class UserServices {
                 throw new usernameAlreadyExists(username);
         }
     }
+
     public static String checkUserExist(String username) throws usernameDoesNotExist{
         int ok = 0;
         String role = null;
@@ -130,19 +130,6 @@ public class UserServices {
         } else {
             return role;
         }
-    }
-
-    public static boolean checkIsInDataBase(String username){
-        boolean b=false;
-        for (User user : customerRepository.find()) {
-            if (Objects.equals(username, user.getUsername()))
-                b=true;
-        }
-        for (User user : trainerRepository.find()) {
-            if (Objects.equals(username, user.getUsername()))
-                b=true;
-        }
-        return b;
     }
 
     public static boolean checkExerciseInDataBase(String name,String customer){
@@ -262,14 +249,6 @@ public class UserServices {
         return customer;
     }
 
-    public static List TrainerList() {
-        List<Trainer> trainers = new ArrayList<>();
-        for (Trainer user : trainerRepository.find()) {
-            trainers.add(user);
-        }
-        return trainers;
-    }
-
     public static List ExercisesList() {
         List<Exercise> exercises = new ArrayList<>();
         for (Exercise ex : exerciseRepository.find()) {
@@ -279,17 +258,6 @@ public class UserServices {
         }
         return exercises;
     }
-
-    public static List ChatList() {
-        List<Chat> chat = new ArrayList<>();
-        for (Chat c : chatRepository.find()) {
-            if(c.getSender().equals(loggedInUsername)) {
-                chat.add(c);
-            }
-        }
-        return chat;
-    }
-
 
     public static List CustomerListUsername() {
         List<String> customers = new ArrayList<>();
@@ -315,15 +283,6 @@ public class UserServices {
             }
         }
         return exercises;
-    }
-
-    public static String getTrainerName() {
-        for (Trainer user : trainerRepository.find()) {
-            if (Objects.equals(loggedInUsername, user.getUsername())) {
-                return user.getUsername();
-            }
-        }
-        return null;
     }
 
     public static String getCustomerUsername(String customerUsername) {
@@ -369,6 +328,22 @@ public class UserServices {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
+    }
+
+    public static List<Customer> getAllCustomers() {
+        return customerRepository.find().toList();
+    }
+
+    public static List<Trainer> getAllTrainers() {
+        return trainerRepository.find().toList();
+    }
+
+    public static List<Exercise> getAllExercises() {
+        return exerciseRepository.find().toList();
+    }
+
+    public static List<Chat> getAllChats() {
+        return chatRepository.find().toList();
     }
 
 }

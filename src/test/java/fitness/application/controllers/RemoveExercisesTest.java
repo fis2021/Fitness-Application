@@ -19,7 +19,7 @@ import org.testfx.framework.junit5.Start;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
-class EditMyProfileTest {
+class RemoveExercisesTest {
     @BeforeEach
     void setUp() throws Exception {
         FileSystemServices.APPLICATION_FOLDER = ".test-fitnessapplication";
@@ -44,27 +44,25 @@ class EditMyProfileTest {
     }
 
     @Test
-    @DisplayName("Successfully Edit My Profile")
-    void successfulEditMyProfile(FxRobot robot) throws incorrectUsername, incorrectPassword, usernameAlreadyExists, emptyFieldException, usernameDoesNotExist {
-        UserServices.addCustomer("USERNAME","EMAIL","PASSWORD","FULLNAME","Customer");
+    @DisplayName("Successfully Added Exercise")
+    void successfulChat(FxRobot robot) throws incorrectUsername, incorrectPassword, usernameAlreadyExists, emptyFieldException, usernameDoesNotExist {
+        UserServices.addCustomer("CUSTOMER","EMAIL","PASSWORD","FULLNAME","Customer");
+        UserServices.addTrainer("TRAINER","EMAIL","PASSWORD","FULLNAME","Trainer");
+        UserServices.addExercise("TRAINER","CUSTOMER","Chest","Exercise Name","4","10",2021,8,4);
         robot.clickOn("#usernameField");
-        robot.write("USERNAME");
+        robot.write("TRAINER");
         robot.clickOn("#passwordField");
         robot.write("PASSWORD");
         robot.clickOn("#loginButton");
-        robot.clickOn("#myProfileButton");
-        robot.clickOn("#editProfileButton");
-        robot.clickOn("#heightField");
-        robot.write("190");
-        robot.clickOn("#weightField");
-        robot.write("80");
-        robot.clickOn("#ageField");
-        robot.write("20");
-        robot.clickOn("#gender");
+        robot.clickOn("#removeButton");
+        robot.clickOn("#customerBox");
         robot.type(KeyCode.ENTER);
-        robot.clickOn("#descriptionField");
-        robot.write("DESCRIPTION");
-        robot.clickOn("#saveButton");
-
+        robot.clickOn("#selectButton");
+        robot.clickOn("#exerciseBox");
+        robot.type(KeyCode.ENTER);
+        robot.clickOn("#removeButton");
+        if(UserServices.checkExerciseInDataBase("Exercise Name","CUSTOMER")==true){
+            fail();
+        }
     }
 }

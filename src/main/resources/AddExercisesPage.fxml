@@ -16,8 +16,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="customer" layoutX="268.0" layoutY="102.0" prefHeight="26.0" prefWidth="149.0" />
-      <ChoiceBox fx:id="muscleGroup" layoutX="268.0" layoutY="137.0" prefHeight="26.0" prefWidth="149.0" />
+      <ChoiceBox fx:id="customer" id="customer" layoutX="268.0" layoutY="102.0" prefHeight="26.0" prefWidth="149.0" />
+      <ChoiceBox fx:id="muscleGroup" id="muscleGroup" layoutX="268.0" layoutY="137.0" prefHeight="26.0" prefWidth="149.0" />
       <Label layoutX="157.0" layoutY="139.0" style="-fx-font-weight : bold;" text="Muscle group:" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -28,10 +28,10 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="exercisesNameField" layoutX="269.0" layoutY="176.0" />
-      <TextField fx:id="setsField" layoutX="269.0" layoutY="209.0" />
-      <TextField fx:id="seriesField" layoutX="269.0" layoutY="243.0" />
-      <DatePicker fx:id="dueDate" layoutX="269.0" layoutY="276.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="exercisesNameField" id="exercisesNameField" layoutX="269.0" layoutY="176.0" />
+      <TextField fx:id="setsField" id="setsField" layoutX="269.0" layoutY="209.0" />
+      <TextField fx:id="seriesField" id="seriesField" layoutX="269.0" layoutY="243.0" />
+      <DatePicker fx:id="dueDate" id="dueDate" layoutX="269.0" layoutY="276.0" prefHeight="26.0" prefWidth="150.0" />
       <Label layoutX="222.0" layoutY="211.0" style="-fx-font-weight : bold;" text="Sets:" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -47,7 +47,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="submitButton" layoutX="348.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="38.0" prefWidth="82.0" style="-fx-background-color: transparent ;" text="Submit" textFill="WHITE">
+      <Button fx:id="submitButton" id="submitButton" layoutX="348.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="38.0" prefWidth="82.0" style="-fx-background-color: transparent ;" text="Submit" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font></Button>

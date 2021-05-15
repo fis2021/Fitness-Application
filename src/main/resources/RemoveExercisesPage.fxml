@@ -11,21 +11,21 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="customerBox" layoutX="240.0" layoutY="136.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="customerBox" id="customerBox" layoutX="240.0" layoutY="136.0" prefWidth="150.0" />
       <Label layoutX="123.0" layoutY="175.0" style="-fx-font-weight : bold;" text="Exercise name:" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="exerciseBox" layoutX="240.0" layoutY="173.0" prefHeight="26.0" prefWidth="150.0" />
-      <Button fx:id="removeButton" layoutX="323.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#handleRemove" prefHeight="26.0" prefWidth="66.0" text="Remove" />
+      <ChoiceBox fx:id="exerciseBox" id="exerciseBox" layoutX="240.0" layoutY="173.0" prefHeight="26.0" prefWidth="150.0" />
+      <Button fx:id="removeButton" id="removeButton" layoutX="323.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#handleRemove" prefHeight="26.0" prefWidth="66.0" text="Remove" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#handleBack" prefHeight="54.0" prefWidth="77.0" text="Back" />
       <Text fx:id="messageText" style="-fx-font-weight : bold;" fill="WHITE" layoutX="3.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="selectButton" layoutX="399.0" layoutY="135.0" mnemonicParsing="false" onMouseClicked="#handleSelect" prefHeight="26.0" prefWidth="58.0" text="Select " />
+      <Button fx:id="selectButton" id="selectButton" layoutX="399.0" layoutY="135.0" mnemonicParsing="false" onMouseClicked="#handleSelect" prefHeight="26.0" prefWidth="58.0" text="Select " />
       <Label layoutX="227.0" layoutY="17.0" style="-fx-font-weight : bold;" text="Remove Exercise" textFill="WHITE">
          <font>
             <Font size="26.0" />

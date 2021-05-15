@@ -15,6 +15,7 @@ public class Chat {
     public Chat(String name , String message)
     {
         this.name=name;
+        this.message=message;
         this.finalMessage = message;
     }
 
