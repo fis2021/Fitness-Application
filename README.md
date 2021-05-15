@@ -3,9 +3,9 @@
 This application aims to help customers by offering advice on how to have a healthy lifestyle. 
 This includes exercises, the number of calories the customer needs to consume each day and private talk with trainers.
 ## Technologies Used
-* [Java 15 or 16](https://www.oracle.com/java/technologies/javase-downloads.html)
+* [Java 15](https://www.oracle.com/java/technologies/javase-downloads.html)
 * [JavaFX](https://openjfx.io/openjfx-docs/) (as GUI)
-* [Maven](https://maven.apache.org/) / [Gradle](https://gradle.org/) (as build tools)
+* [Maven](https://maven.apache.org/)
 * [Nitrite Java](https://www.dizitart.org/nitrite-database.html) (as Database)
 ## Registration
 The user needs to first register into the application by selecting one of the 2 roles:
