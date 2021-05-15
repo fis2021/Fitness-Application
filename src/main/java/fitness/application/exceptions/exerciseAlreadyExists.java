@@ -11,5 +11,4 @@ public class exerciseAlreadyExists extends Exception{
     public String getName() {
         return name;
     }
-
 }

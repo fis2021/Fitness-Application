@@ -1,9 +1,6 @@
 package fitness.application.services;
 
-import fitness.application.exceptions.emptyFieldException;
-import fitness.application.exceptions.incorrectPassword;
-import fitness.application.exceptions.incorrectUsername;
-import fitness.application.exceptions.usernameAlreadyExists;
+import fitness.application.exceptions.*;
 import fitness.application.models.Chat;
 import fitness.application.models.Customer;
 import fitness.application.models.Exercise;
@@ -49,7 +46,7 @@ class UserServicesTest {
         Customer customer = (Customer) UserServices.CustomerList().get(0);
         assertThat(customer).isNotNull();
         assertThat(customer.getUsername()).isEqualTo("CUSTOMER");
-       // assertThat(customer.getFullName()).isEqualTo("FULLNAME");
+        //assertThat(customer.getFullName()).isEqualTo("FULLNAME");
         assertThat(customer.getEmail()).isEqualTo("EMAIL");
         assertThat(customer.getRole()).isEqualTo("Customer");
         assertThat(customer.getPassword()).isEqualTo(UserServices.encodePassword("CUSTOMER","PASSWORD"));
@@ -117,4 +114,61 @@ class UserServicesTest {
         }
     }
 
+    // EXCEPTIONS
+    @Test
+    @DisplayName("Username does not exist")
+    void testUsernameDoesNotExist() {
+        assertThrows(usernameDoesNotExist.class, () -> {
+            UserServices.checkUserExist("");
+        });
+        assertThrows(usernameDoesNotExist.class, () -> {
+            UserServices.checkUserExist(null);
+        });
+    }
+    @Test
+    @DisplayName("Check empty fields")
+    void testEmptyFields() {
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsChat("");
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFields("","FULLNAME","PASSWORD","EMAIL","Customer");
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFields("USER","","PASSWORD","EMAIL","Customer");
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFields("USER","FULLNAME","","EMAIL","Customer");
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFields("USER","FULLNAME","PASSWORD","","Customer");
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFields("USER","FULLNAME","PASSWORD","EMAIL",null);
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsAddExercise(null,"Chest","ExerciseName","4","10",2021);
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsAddExercise("USER",null,"ExerciseName","4","10",2021);
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsAddExercise("USER","Chest","","4","10",2021);
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsAddExercise("USER","Chest","ExerciseName","","10",2021);
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsAddExercise("USER","Chest","ExerciseName","4","",2021);
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsAddExercise("USER","Chest","ExerciseName","4","10",0);
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsLogIn("","PASSWORD");
+        });
+        assertThrows(emptyFieldException.class, () -> {
+            UserServices.checkEmptyFieldsLogIn("USER","");
+        });
+    }
 }
