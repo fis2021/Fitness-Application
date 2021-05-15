@@ -21,6 +21,7 @@ public class UserServices {
     public static ObjectRepository<Trainer> trainerRepository;
     public static ObjectRepository<Exercise> exerciseRepository;
     public static ObjectRepository<Chat> chatRepository;
+    private static Nitrite database;
 
     private static LocalDate currentDate=LocalDate.now();
     private static int currentDay=currentDate.getDayOfMonth();
@@ -37,8 +38,8 @@ public class UserServices {
     public static String getLoggedInUsername(){return loggedInUsername;}
 
     public static void initDatabase() {
-
-        Nitrite database = Nitrite.builder()
+        FileSystemServices.initDirectory();
+        database = Nitrite.builder()
                 .filePath(getPathToFile("users.db").toFile())
                 .openOrCreate("admin", "admin");
         customerRepository = database.getRepository(Customer.class);
@@ -343,6 +344,10 @@ public class UserServices {
         {
             return false;
         }
+    }
+
+    public static Nitrite getDatabase() {
+        return database;
     }
 
     public static String encodePassword(String salt, String password) {
